@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Martian+Mono&display=swap" rel="stylesheet">
+
+        <link href="styles.css" rel="stylesheet">
+        <title>Gaga's Trivia!</title>
+        <script>
+            // Run script once DOM is loaded
+            document.addEventListener('DOMContentLoaded', function() {
+
+                //When correct answer is clicked, change color to green
+                let corrects = document.querySelectorAll('.correct');
+                for (let i = 0; i < corrects.length; i++)
+                {
+                    corrects[i].addEventListener('click', function() {
+                    corrects[i].style.backgroundColor = 'green';
+                    document.querySelector('#feedback1').innerHTML = 'Correct!';
+                    document.querySelector('#feedback2').innerHTML = 'Correct!';
+                    });
+                }
+
+                //When any incorrect answer is clicked, change color to red
+                let incorrects = document.querySelectorAll('.incorrect');
+                for (let i = 0; i < incorrects.length; i++)
+                {
+                    incorrects[i].addEventListener('click', function() {
+                        incorrects[i].style.backgroundColor = 'red';
+                        document.querySelector('#feedback1').innerHTML = 'Incorrect';
+                        document.querySelector('#feedback2').innerHTML = 'Incorrect';
+                    });
+                }
+
+                //Check free response submission
+                document.querySelector('#check').addEventListener('click', function() {
+                    let input = document.querySelector('input');
+                    if (input.value === 'ARTPOP') {
+                        input.style.backgroundColor = 'green';
+                        document.querySelector('#feedback3').innerHTML = 'Correct!';
+                    } else {
+                        input.style.backgroundColor = 'red';
+                        document.querySelector('#feedback3').innerHTML = 'Incorrect';
+                    }
+                });
+
+            });
+
+        </script>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Gaga's Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Act 1: Multiple Choice </h2>
+                <hr>
+                    <h3>1. Lady Gaga is known for playing differents instruments. Which one of these was the first instrument that she learned?</h3>
+                        <br>
+                        <button class="correct">Piano</button> <!-- id works for 1 element, and class for multiple-->
+                        <button class="incorrect">Guitar</button>
+                        <button class="incorrect">Bass</button>
+                        <button class="incorrect">Saxophone</button>
+
+                        <p id="feedback1"></p>
+
+                    <br>
+
+                    <h3>2. Lady Gaga is known for her elaborate and unique fashion sense. Which of the following is NOT and outfit she has worn in public?</h3>
+                    <br>
+                    <button class="incorrect">A meat dress</button>
+                    <button class="incorrect">A bubble dress</button>
+                    <button class="incorrect">A mermaid costume</button>
+                    <button class="correct">A princess dress</button>
+
+                    <p id="feedback2"></p>
+
+            </div>
+
+            <div class="section">
+                <h2>Act 2: Free Response</h2>
+                <hr>
+                <h3>1. Which is Gaga's most undervalued album by herself?</h3>
+                <input type="text"></input>
+                <button id="check">Check Answer</button>
+
+                <p id="feedback3"></p>
+            </div>
+        </div>
+    </body>
+</html>
